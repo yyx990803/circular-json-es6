@@ -14,3 +14,9 @@ var clone = CircularJSON.parse(CircularJSON.stringify(obj))
 
 clone.a === clone // -> true
 ```
+
+### NOTE
+
+The default `stringify` method optimizes for cases where no circular reference is present by trying a plain `JSON.stringify` first. This means if no circular references are found in the data then it will not persist multiple (but non-circular) references to the same object.
+
+If you want to enforce reference persistence, use `CircularJSON.stringifyStrict` instead.

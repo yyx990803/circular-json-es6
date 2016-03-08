@@ -66,20 +66,31 @@ function isPlainObject (obj) {
 
 exports.stringify = function stringify (data, replacer, space) {
   try {
-    return JSON.stringify([data])
+    return arguments.length === 1
+      ? JSON.stringify(data)
+      : JSON.stringify(data, replacer, space)
   } catch (e) {
-    var list = []
-    encode(data, replacer, list, new Map())
-    return space
-      ? JSON.stringify(list, null, space) // simply having the space arg makes it slower
-      : JSON.stringify(list)
+    return exports.stringifyStrict(data, replacer, space)
   }
 }
 
 exports.parse = function parse (data, reviver) {
-  var list = JSON.parse(data)
-  if (list.length > 1) {
+  var hasCircular = /^\s/.test(data)
+  if (!hasCircular) {
+    return arguments.length === 1
+      ? JSON.parse(data)
+      : JSON.parse(data, reviver)
+  } else {
+    var list = JSON.parse(data)
     decode(list, reviver)
+    return list[0]
   }
-  return list[0]
+}
+
+exports.stringifyStrict = function (data, replacer, space) {
+  var list = []
+  encode(data, replacer, list, new Map())
+  return space
+    ? ' ' + JSON.stringify(list, null, space)
+    : ' ' + JSON.stringify(list)
 }
