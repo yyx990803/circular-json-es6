@@ -1,6 +1,6 @@
 {
   "name": "circular-json-es6",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "circular JSON.stringify and JSON.parse, for environments with native ES6 Map",
   "main": "index.js",
   "devDependencies": {
