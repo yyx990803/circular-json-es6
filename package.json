@@ -4,8 +4,9 @@
   "description": "circular JSON.stringify and JSON.parse, for environments with native ES6 Map",
   "main": "index.js",
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "circular-json": "^0.3.0"
+    "circular-json": "^0.3.0",
+    "jsan": "^3.1.2",
+    "mocha": "^2.4.5"
   },
   "scripts": {
     "test": "mocha",
