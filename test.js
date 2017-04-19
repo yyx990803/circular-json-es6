@@ -14,6 +14,7 @@ describe('circular-json', function () {
   o.c.f = o.d
   o.b = o.c
   o.arr = [o.a, o.c, o.d]
+  o.d.arr = o.arr
 
   o = c.parse(c.stringify(o))
 
@@ -33,6 +34,7 @@ describe('circular-json', function () {
   it('nested cross reference', function () {
     assert.ok(o.c.f === o.d)
     assert.ok(o.b = o.c)
+    assert.ok(o.arr === o.d.arr)
   })
 
   it('array reference', function () {
