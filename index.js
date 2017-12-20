@@ -30,7 +30,6 @@ function encode (data, replacer, list, seen) {
       stored[i] = encode(value, replacer, list, seen)
     }
   } else {
-    index = list.length
     list.push(data)
   }
   return index
