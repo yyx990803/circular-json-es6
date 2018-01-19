@@ -62,7 +62,7 @@ exports.stringify = function stringify (data, replacer, space) {
       ? JSON.stringify(data)
       : JSON.stringify(data, replacer, space)
   } catch (e) {
-    return stringifyStrict(data, replacer, space)
+    return exports.stringifyStrict(data, replacer, space)
   }
 }
 
