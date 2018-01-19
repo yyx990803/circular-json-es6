@@ -56,7 +56,7 @@ function decode (list, reviver) {
   }
 }
 
-export function stringify (data, replacer, space) {
+exports.stringify = function stringify (data, replacer, space) {
   try {
     return arguments.length === 1
       ? JSON.stringify(data)
@@ -66,7 +66,7 @@ export function stringify (data, replacer, space) {
   }
 }
 
-export function parse (data, reviver) {
+exports.parse = function parse (data, reviver) {
   var hasCircular = /^\s/.test(data)
   if (!hasCircular) {
     return arguments.length === 1
@@ -79,7 +79,7 @@ export function parse (data, reviver) {
   }
 }
 
-export function stringifyStrict (data, replacer, space) {
+exports.stringifyStrict = function stringifyStrict (data, replacer, space) {
   var list = []
   encode(data, replacer, list, new Map())
   return space
